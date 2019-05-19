@@ -2,8 +2,27 @@
 <html lang="en-US">
 <head>
 	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
+		
 </head>
 <body>
-  
+	<center>
+	<div id="mainDiv">
+		<div id="upperDiv">
+			<input class="symbol" type="text" value="O" readonly><input class="score" type="text" value=" -" dir="rtl">
+			<input class="symbol" type="text" value="X" readonly><input class="score" type="text" value=" -" dir="rtl"><br>
+			<input id= "status" type="text" value="Start game or select player">
+		</div>
+		<div id="middleDiv">
+			<button class="size right_border bottom_border"></button><button class="size left_border right_border bottom_border"></button><button class="size left_border bottom_border"></button><br>
+			<button class="size right_border top_border bottom_border"></button><button class="size left_border right_border top_border bottom_border"></button><button class="size left_border top_border bottom_border"></button><br>
+			<button class="size right_border top_border"></button><button class="size left_border right_border top_border"></button><button class="size left_border top_border"></button><br>
+		</div>
+		<div id="bottomDiv">
+			<button id="rstrt">RESTART GAME</button>
+		</div>
+
+	</div>
+  </center>
 </body>
 </html>
