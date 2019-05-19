@@ -4,26 +4,26 @@
 	<title>Tic Tac Toe</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
 	<script type="text/javascript" src="assets/js/script.js"></script>
-		
+
 </head>
 <body>
 	<center>
-	<div id="mainDiv">
-		<div id="upperDiv">
-			<input class="symbol hoverLeft" type="text" value="O" onfocus ="addHoverEffectLeft()" onblur ="removeHoverEffect()" readonly><input class="score hoverLeft" type="text" value=" -" dir="rtl" onfocus="addHoverEffectLeft()" onblur="removeHoverEffect()" readonly>
-			<input class="symbol hoverRight" type="text" value="X" onfocus="addHoverEffectRight()" onblur="removeHoverEffect()"readonly><input class="score hoverRight" type="text" value=" -" dir="rtl" onfocus="addHoverEffectRight()" onblur="removeHoverEffect()" readonly><br>
-			<input id= "status" type="text" value="Start game or select player" readonly>
-		</div>
-		<div id="middleDiv">
-			<button id="one" class="size right_border bottom_border"></button><button id="two" class="size left_border right_border bottom_border"></button><button id="three" class="size left_border bottom_border"></button><br>
-			<button id="four" class="size right_border top_border bottom_border"></button><button id="five" class="size left_border right_border top_border bottom_border"></button><button id="six" class="size left_border top_border bottom_border"></button><br>
-			<button id="seven" class="size right_border top_border"></button><button id="eight" class="size left_border right_border top_border"></button><button id="nine" class="size left_border top_border"></button><br>
-		</div>
-		<div id="bottomDiv">
-			<button id="rstrt" onclick="reset()">RESTART GAME</button>
-		</div>
+		<div id="mainDiv">
+			<div id="upperDiv">
+				<input class="symbol hoverLeft" type="text" value="⚫" onfocus ="addHoverEffectLeft()" onblur ="removeHoverEffect()" readonly><input class="score hoverLeft" type="text" value="0" dir="rtl" onfocus="addHoverEffectLeft()" onblur="removeHoverEffect()" readonly>
+				<input class="symbol hoverRight" type="text" value="✔" onfocus="addHoverEffectRight()" onblur="removeHoverEffect()"readonly><input class="score hoverRight" type="text" value="0" dir="rtl" onfocus="addHoverEffectRight()" onblur="removeHoverEffect()" readonly><br>
+				<input id= "status" type="text" value="Start game or select player" readonly>
+			</div>
+			<div id="middleDiv">
+				<button id="one" class="size right_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="two" class="size left_border right_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="three" class="size left_border bottom_border" onclick="checkGameStatus(this.id)">1</button><br>
+				<button id="four" class="size right_border top_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="five" class="size left_border right_border top_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="six" class="size left_border top_border bottom_border" onclick="checkGameStatus(this.id)">1</button><br>
+				<button id="seven" class="size right_border top_border" onclick="checkGameStatus(this.id)">1</button><button id="eight" class="size left_border right_border top_border" onclick="checkGameStatus(this.id)">1</button><button id="nine" class="size left_border top_border" onclick="checkGameStatus(this.id)">1</button><br>
+			</div>
+			<div id="bottomDiv">
+				<button id="rstrt" onclick="reset()">RESTART GAME</button>
+			</div>
 
-	</div>
-  </center>
+		</div>
+	</center>
 </body>
 </html>
