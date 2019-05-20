@@ -10,17 +10,49 @@
 	<center>
 		<div id="mainDiv">
 			<div id="upperDiv">
-				<input class="symbol hoverLeft" type="text" value="⚫" onfocus ="addHoverEffectLeft()" onblur ="removeHoverEffect()" readonly><input id="oScore" class="score hoverLeft" type="text" value="0" dir="rtl" onfocus="addHoverEffectLeft()" onblur="removeHoverEffect()" readonly>
-				<input class="symbol hoverRight" type="text" value="✔" onfocus="addHoverEffectRight()" onblur="removeHoverEffect()"readonly><input id="xScore" class="score hoverRight" type="text" value="0" dir="rtl" onfocus="addHoverEffectRight()" onblur="removeHoverEffect()" readonly><br>
-				<input id= "status" type="text" value="Start game or select player" readonly>
+				<input class="symbol player1 bottom-edge-shadow" type="text" value="⚫" readonly><input id="oScore" class="score player1 bottom-edge-shadow" type="text" value="0" dir="rtl" readonly>
+				<input class="symbol player2" type="text" value="✔" readonly><input id="xScore" class="score player2" type="text" value="0" dir="rtl" readonly><br>
+				<input id= "status" type="text" value="⚫ turn" readonly>
 			</div>
 			<div id="middleDiv">
-				<button id="one" class="size right_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="two" class="size left_border right_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="three" class="size left_border bottom_border" onclick="checkGameStatus(this.id)">1</button><br>
-				<button id="four" class="size right_border top_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="five" class="size left_border right_border top_border bottom_border" onclick="checkGameStatus(this.id)">1</button><button id="six" class="size left_border top_border bottom_border" onclick="checkGameStatus(this.id)">1</button><br>
-				<button id="seven" class="size right_border top_border" onclick="checkGameStatus(this.id)">1</button><button id="eight" class="size left_border right_border top_border" onclick="checkGameStatus(this.id)">1</button><button id="nine" class="size left_border top_border" onclick="checkGameStatus(this.id)">1</button><br>
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="right_border bottom_border">
+							<button id="one" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+						<td class="left_border right_border bottom_border">
+							<button id="two" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+						<td class="left_border bottom_border">
+							<button id="three" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="right_border top_border bottom_border">
+							<button id="four" class="size" onclick="checkGameStatus(this.id)">1</button>	
+						</td>
+						<td class="left_border right_border top_border bottom_border">
+							<button id="five" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+						<td class="left_border top_border bottom_border">
+							<button id="six" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="right_border top_border">
+							<button id="seven" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+						<td class="left_border right_border top_border">
+							<button id="eight" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+						<td class="left_border top_border">
+							<button id="nine" class="size" onclick="checkGameStatus(this.id)">1</button>
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div id="bottomDiv">
-				<button id="rstrt" onclick="reset()">RESTART GAME</button>
+				<button id="rstrt" onclick="reset()" onmouseenter ="addHoverEffect()" onmouseout="removeHoverEffect()">RESTART GAME</button>
 			</div>
 
 		</div>

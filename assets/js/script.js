@@ -1,41 +1,58 @@
 var count = 1;
 var won = false;
 
-function reset() {
-	var a = document.getElementsByTagName("button");
-	for (var i = 0; i < a.length - 1; i++) {
-		// alert(a[i].id);
-		// alert("fuck");
-		removeClass(a[i].id, "O");
-		removeClass(a[i].id, "X");
-		removeClass(a[i].id, "disabled");
-		a[i].innerHTML = 1;
-	}
-	count = 1;
-	won = false;
+
+function addHoverEffect(){
+	var a = document.getElementById("rstrt");
+	a.classList.add("edge-shadow");
+	
 }
 
-function addHoverEffectLeft(){
-	var a = document.getElementsByClassName("hoverLeft");
+function addHoverEffectPlayer1(){
+	var a = document.getElementsByClassName("player1");
 	for(var i = 0 ; i < a.length; i++){
 		a[i].classList.add("bottom-edge-shadow");
 	}
 }
 
-function addHoverEffectRight(){
-	var a = document.getElementsByClassName("hoverRight");
+function addHoverEffectPlayer2(){
+	var a = document.getElementsByClassName("player2");
 	for(var i = 0 ; i < a.length; i++){
 		a[i].classList.add("bottom-edge-shadow");
+	}
+}
+function removeHoverEffectPlayer1(){
+	var a = document.getElementsByClassName("player1");
+	for(var i = 0 ; i < a.length; i++){
+		a[i].classList.remove("bottom-edge-shadow");
+	}
+}
+
+function removeHoverEffectPlayer2(){
+	var a = document.getElementsByClassName("player2");
+	for(var i = 0 ; i < a.length; i++){
+		a[i].classList.remove("bottom-edge-shadow");
 	}
 }
 
 function removeHoverEffect(){
-	var a = document.getElementsByClassName("symbol");
-	var b = document.getElementsByClassName("score");
-	for(var i = 0 ; i < a.length; i++){
-		a[i].classList.remove("bottom-edge-shadow");
-		b[i].classList.remove("bottom-edge-shadow");
+	var a = document.getElementById("rstrt");
+	a.classList.remove("edge-shadow");
+}
+
+function reset() {
+	var a = document.getElementsByTagName("button");
+	for (var i = 0; i < a.length - 1; i++) {
+		removeClass(a[i].id, "O");
+		removeClass(a[i].id, "X");
+		removeClass(a[i].id, "disabled");
+		a[i].innerHTML="1";
+		player1Turn();
+		addHoverEffectPlayer1();
+		removeHoverEffectPlayer2();
 	}
+	count = 1;
+	won = false;
 }
 
 function checkGameStatus(id) {
@@ -140,8 +157,13 @@ function checkGameStatus(id) {
 			)
 		{
 			alert("⚫ wins");
+			player1Win();
 			document.getElementById("oScore").value = (parseInt(document.getElementById("oScore").value) + 1);
 			won = true;
+		}else{
+			addHoverEffectPlayer2();
+			removeHoverEffectPlayer1();
+			player2Turn();
 		}
 		count++;
 	} else
@@ -177,14 +199,21 @@ function checkGameStatus(id) {
 			)
 		{
 			alert("✔ wins");
+			player2Win();
 			document.getElementById("xScore").value = (parseInt(document.getElementById("xScore").value) + 1);
 			won = true;
+		}else{
+			addHoverEffectPlayer1();
+			removeHoverEffectPlayer2();
+			player1Turn();
 		}
 		count++;
 	}
 	if(count == 10 && !won) {
 		document.getElementById(id).innerHTML = "⚫";
 		addClass(id, "O disabled");
+		document.getElementById(id).classList.add("size");
+		draw();
 		alert("draw.");
 	}
 }
@@ -211,4 +240,23 @@ function toggleClass(id, className) {
 	} else {
 		addClass(id, className);
 	}
+}
+function player1Turn(){
+	document.getElementById("status").value = "⚫ turn";
+}
+
+function player2Turn(){
+	document.getElementById("status").value = "✔ turn";
+}
+
+function player1Win(){
+	document.getElementById("status").value = "⚫ wins";
+}
+
+function player2Win(){
+	document.getElementById("status").value = "✔ wins";
+}
+
+function draw(){
+	document.getElementById("status").value = "⚫ ✔ draw";
 }
