@@ -1,4 +1,5 @@
 var count = 1;
+var won = false;
 
 function reset() {
 	var a = document.getElementsByTagName("button");
@@ -11,6 +12,7 @@ function reset() {
 		a[i].innerHTML = 1;
 	}
 	count = 1;
+	won = false;
 }
 
 function addHoverEffectLeft(){
@@ -37,6 +39,10 @@ function removeHoverEffect(){
 }
 
 function checkGameStatus(id) {
+	if(count == 10 && !won) {
+		alert("draw. please restart the game");
+		return;
+	}
 	if(
 		hasClass("one", "O") &&
 		hasClass("two", "O") &&
@@ -65,6 +71,7 @@ function checkGameStatus(id) {
 		)
 	{
 		alert("⚫ wins. please restart the game");
+		won = true;
 	} else if(
 		hasClass("one", "X") &&
 		hasClass("two", "X") &&
@@ -93,12 +100,7 @@ function checkGameStatus(id) {
 		)
 	{
 		alert("✔ wins. please restart the game");
-	}
-	else if(count == 9)
-	{
-		document.getElementById(id).innerHTML = "⚫";
-		addClass(id, "O disabled");
-		alert("draw. please restart the game");
+		won = true;
 	}
 	else if(hasClass(id,"disabled"))
 	{
@@ -139,6 +141,7 @@ function checkGameStatus(id) {
 		{
 			alert("⚫ wins");
 			document.getElementById("oScore").value = (parseInt(document.getElementById("oScore").value) + 1);
+			won = true;
 		}
 		count++;
 	} else
@@ -175,8 +178,14 @@ function checkGameStatus(id) {
 		{
 			alert("✔ wins");
 			document.getElementById("xScore").value = (parseInt(document.getElementById("xScore").value) + 1);
+			won = true;
 		}
 		count++;
+	}
+	if(count == 10 && !won) {
+		document.getElementById(id).innerHTML = "⚫";
+		addClass(id, "O disabled");
+		alert("draw.");
 	}
 }
 
