@@ -1,7 +1,16 @@
 var count = 1;
 
 function reset() {
-	alert();
+	var a = document.getElementsByTagName("button");
+	for (var i = 0; i < a.length - 1; i++) {
+		// alert(a[i].id);
+		// alert("fuck");
+		removeClass(a[i].id, "O");
+		removeClass(a[i].id, "X");
+		removeClass(a[i].id, "disabled");
+		a[i].innerHTML = 1;
+	}
+	count = 1;
 }
 
 function addHoverEffectLeft(){
@@ -29,67 +38,144 @@ function removeHoverEffect(){
 
 function checkGameStatus(id) {
 	if(
-		hasClass("one", "o") &&
-		hasClass("two", "o") &&
-		hasClass("three", "o") ||
-		hasClass("four", "o") &&
-		hasClass("five", "o") &&
-		hasClass("six", "o") ||
-		hasClass("seven", "o") &&
-		hasClass("eight", "o") &&
-		hasClass("nine", "o") ||
-		hasClass("one", "o") &&
-		hasClass("four", "o") &&
-		hasClass("seven", "o") ||
-		hasClass("two", "o") &&
-		hasClass("five", "o") &&
-		hasClass("eight", "o") ||
-		hasClass("three", "o") &&
-		hasClass("six", "o") &&
-		hasClass("nine", "o") ||
-		hasClass("one", "o") &&
-		hasClass("five", "o") &&
-		hasClass("nine", "o") ||
-		hasClass("three", "o") &&
-		hasClass("five", "o") &&
-		hasClass("seven", "o")
+		hasClass("one", "O") &&
+		hasClass("two", "O") &&
+		hasClass("three", "O") ||
+		hasClass("four", "O") &&
+		hasClass("five", "O") &&
+		hasClass("six", "O") ||
+		hasClass("seven", "O") &&
+		hasClass("eight", "O") &&
+		hasClass("nine", "O") ||
+		hasClass("one", "O") &&
+		hasClass("four", "O") &&
+		hasClass("seven", "O") ||
+		hasClass("two", "O") &&
+		hasClass("five", "O") &&
+		hasClass("eight", "O") ||
+		hasClass("three", "O") &&
+		hasClass("six", "O") &&
+		hasClass("nine", "O") ||
+		hasClass("one", "O") &&
+		hasClass("five", "O") &&
+		hasClass("nine", "O") ||
+		hasClass("three", "O") &&
+		hasClass("five", "O") &&
+		hasClass("seven", "O")
 		)
 	{
-		alert("O won the game");
+		alert("⚫ wins. please restart the game");
 	} else if(
-		hasClass("one", "x") &&
-		hasClass("two", "x") &&
-		hasClass("three", "x") ||
-		hasClass("four", "x") &&
-		hasClass("five", "x") &&
-		hasClass("six", "x") ||
-		hasClass("seven", "x") &&
-		hasClass("eight", "x") &&
-		hasClass("nine", "x") ||
-		hasClass("one", "x") &&
-		hasClass("four", "x") &&
-		hasClass("seven", "x") ||
-		hasClass("two", "x") &&
-		hasClass("five", "x") &&
-		hasClass("eight", "x") ||
-		hasClass("three", "x") &&
-		hasClass("six", "x") &&
-		hasClass("nine", "x") ||
-		hasClass("one", "x") &&
-		hasClass("five", "x") &&
-		hasClass("nine", "x") ||
-		hasClass("three", "x") &&
-		hasClass("five", "x") &&
-		hasClass("seven", "x")
-		) {
-		alert("X won the game");
-	} else if(count % 2 == 1) {
+		hasClass("one", "X") &&
+		hasClass("two", "X") &&
+		hasClass("three", "X") ||
+		hasClass("four", "X") &&
+		hasClass("five", "X") &&
+		hasClass("six", "X") ||
+		hasClass("seven", "X") &&
+		hasClass("eight", "X") &&
+		hasClass("nine", "X") ||
+		hasClass("one", "X") &&
+		hasClass("four", "X") &&
+		hasClass("seven", "X") ||
+		hasClass("two", "X") &&
+		hasClass("five", "X") &&
+		hasClass("eight", "X") ||
+		hasClass("three", "X") &&
+		hasClass("six", "X") &&
+		hasClass("nine", "X") ||
+		hasClass("one", "X") &&
+		hasClass("five", "X") &&
+		hasClass("nine", "X") ||
+		hasClass("three", "X") &&
+		hasClass("five", "X") &&
+		hasClass("seven", "X")
+		)
+	{
+		alert("✔ wins. please restart the game");
+	}
+	else if(count == 9)
+	{
 		document.getElementById(id).innerHTML = "⚫";
-		document.getElementById(id).className = document.getElementById(id).className + " o";
+		addClass(id, "O disabled");
+		alert("draw. please restart the game");
+	}
+	else if(hasClass(id,"disabled"))
+	{
+		alert("already selected. please select any another one.");
+		return;
+	}
+	else if(count % 2 == 1)
+	{
+		document.getElementById(id).innerHTML = "⚫";
+		addClass(id, "O disabled");
+
+		if(
+			hasClass("one", "O") &&
+			hasClass("two", "O") &&
+			hasClass("three", "O") ||
+			hasClass("four", "O") &&
+			hasClass("five", "O") &&
+			hasClass("six", "O") ||
+			hasClass("seven", "O") &&
+			hasClass("eight", "O") &&
+			hasClass("nine", "O") ||
+			hasClass("one", "O") &&
+			hasClass("four", "O") &&
+			hasClass("seven", "O") ||
+			hasClass("two", "O") &&
+			hasClass("five", "O") &&
+			hasClass("eight", "O") ||
+			hasClass("three", "O") &&
+			hasClass("six", "O") &&
+			hasClass("nine", "O") ||
+			hasClass("one", "O") &&
+			hasClass("five", "O") &&
+			hasClass("nine", "O") ||
+			hasClass("three", "O") &&
+			hasClass("five", "O") &&
+			hasClass("seven", "O")
+			)
+		{
+			alert("⚫ wins");
+			document.getElementById("oScore").value = (parseInt(document.getElementById("oScore").value) + 1);
+		}
 		count++;
-	} else {
+	} else
+	{
 		document.getElementById(id).innerHTML = "✔";
-		document.getElementById(id).className = document.getElementById(id).className + " x";
+		addClass(id, "X disabled");
+
+		if(
+			hasClass("one", "X") &&
+			hasClass("two", "X") &&
+			hasClass("three", "X") ||
+			hasClass("four", "X") &&
+			hasClass("five", "X") &&
+			hasClass("six", "X") ||
+			hasClass("seven", "X") &&
+			hasClass("eight", "X") &&
+			hasClass("nine", "X") ||
+			hasClass("one", "X") &&
+			hasClass("four", "X") &&
+			hasClass("seven", "X") ||
+			hasClass("two", "X") &&
+			hasClass("five", "X") &&
+			hasClass("eight", "X") ||
+			hasClass("three", "X") &&
+			hasClass("six", "X") &&
+			hasClass("nine", "X") ||
+			hasClass("one", "X") &&
+			hasClass("five", "X") &&
+			hasClass("nine", "X") ||
+			hasClass("three", "X") &&
+			hasClass("five", "X") &&
+			hasClass("seven", "X")
+			)
+		{
+			alert("✔ wins");
+			document.getElementById("xScore").value = (parseInt(document.getElementById("xScore").value) + 1);
+		}
 		count++;
 	}
 }
@@ -100,4 +186,20 @@ function hasClass(id, className) {
 		return true;
 	}
 	return false;
+}
+
+function addClass(id, className) {
+	document.getElementById(id).className = document.getElementById(id).className + " " + className;
+}
+
+function removeClass(id, className) {
+	document.getElementById(id).className = document.getElementById(id).className.replace(className, "");
+}
+
+function toggleClass(id, className) {
+	if(hasClass(id, className)) {
+		removeClass(id, className);
+	} else {
+		addClass(id, className);
+	}
 }
