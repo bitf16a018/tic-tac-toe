@@ -11,27 +11,27 @@ function addHoverEffect(){
 function addHoverEffectPlayer1(){
 	var a = document.getElementsByClassName("player1");
 	for(var i = 0 ; i < a.length; i++){
-		a[i].classList.add("bottom-edge-shadow");
+		a[i].classList.add("bottom-edge");
 	}
 }
 
 function addHoverEffectPlayer2(){
 	var a = document.getElementsByClassName("player2");
 	for(var i = 0 ; i < a.length; i++){
-		a[i].classList.add("bottom-edge-shadow");
+		a[i].classList.add("bottom-edge");
 	}
 }
 function removeHoverEffectPlayer1(){
 	var a = document.getElementsByClassName("player1");
 	for(var i = 0 ; i < a.length; i++){
-		a[i].classList.remove("bottom-edge-shadow");
+		a[i].classList.remove("bottom-edge");
 	}
 }
 
 function removeHoverEffectPlayer2(){
 	var a = document.getElementsByClassName("player2");
 	for(var i = 0 ; i < a.length; i++){
-		a[i].classList.remove("bottom-edge-shadow");
+		a[i].classList.remove("bottom-edge");
 	}
 }
 
@@ -41,12 +41,12 @@ function removeHoverEffect(){
 }
 
 function reset() {
-	var a = document.getElementsByTagName("button");
-	for (var i = 0; i < a.length - 1; i++) {
+	var a = document.getElementsByClassName("size");
+	for (var i = 0; i < a.length; i++) {
 		removeClass(a[i].id, "O");
 		removeClass(a[i].id, "X");
 		removeClass(a[i].id, "disabled");
-		a[i].innerHTML="1";
+		a[i].innerHTML="";
 		player1Turn();
 		addHoverEffectPlayer1();
 		removeHoverEffectPlayer2();
@@ -156,10 +156,10 @@ function checkGameStatus(id) {
 			hasClass("seven", "O")
 			)
 		{
-			alert("⚫ wins");
 			player1Win();
 			document.getElementById("oScore").value = (parseInt(document.getElementById("oScore").value) + 1);
 			won = true;
+			alert("⚫ wins");
 		}else{
 			addHoverEffectPlayer2();
 			removeHoverEffectPlayer1();
@@ -198,10 +198,10 @@ function checkGameStatus(id) {
 			hasClass("seven", "X")
 			)
 		{
-			alert("✔ wins");
 			player2Win();
 			document.getElementById("xScore").value = (parseInt(document.getElementById("xScore").value) + 1);
 			won = true;
+			alert("✔ wins");
 		}else{
 			addHoverEffectPlayer1();
 			removeHoverEffectPlayer2();
